@@ -24,19 +24,21 @@
     }
   </style>
 
-  <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/traceur.js"></script>
-  <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/system.js"></script>
+  <!-- // <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/traceur.js"></script> -->
+  <!-- // <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/system.js"></script> -->
+  <script src="/deps/traceur.js"></script>
+  <script src="/deps/system.js"></script>
 
-  <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/zone.js"></script>
-  <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/long-stack-trace-zone.js"></script>
+  <!-- // <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/zone.js"></script> -->
+  <!-- // <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/long-stack-trace-zone.js"></script> -->
+  <script src="/deps/zone.js"></script>
+  <script src="/deps/long-stack-trace-zone.js"></script>
 
-  <!-- // <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/rtts_assert.js"></script> -->
-  <!-- // <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/angular2/es5/rtts_assert/rtts_assert.js"></script> -->
-  <!-- // <script src="https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/deps/firebase/firebase.js"></script> -->
   <script>
 
     System.config({
-      baseURL: 'https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/',
+      //baseURL: 'https://cdn.rawgit.com/gdi2290/angular2do/ba243121c47922b2d8f6a23ffc657caf8d5fd703/',
+      baseURL: '/',
       paths: {
         '*': 'deps/angular2/es5/*.js',
         'angular2/angular2': 'deps/angular2/es5/angular2/angular2.js',
@@ -49,29 +51,8 @@
         'decorators/*': 'app/decorators/*.js',
         'services/*': 'app/services/*.js',
         'stores/*': 'app/stores/*.js'
-      },
-      // transpiler: 'traceur',
-      // traceurOptions: {
-      //   types: true,
-      //   annotations: true,
-      //   memberVariables: true,
-      //   typeAssertionModule: 'rtts_assert/rtts_assert'
-      // }
+      }
     });
-
-    // none of those work, hack traceur.js Options object instead.
-
-    // $traceurRuntime.options.types = true;
-    // $traceurRuntime.options.annotations = true;
-    // $traceurRuntime.options.memberVariables = true;
-    // $traceurRuntime.options.typeAssertionModule = 'rtts_assert/rtts_assert';
-    // $traceurRuntime.options.typeAssertion = true;
-    // traceur.options.types = true;
-    // traceur.options.annotations = true;
-    // traceur.options.memberVariables = true;
-    // System.traceurOptions.types = true;
-    // System.traceurOptions.annotations = true;
-    // System.traceurOptions.memberVariables = true;
 
     System.import('app/app.js')
     .then(function(module) {
@@ -81,8 +62,6 @@
   </script>
 </head>
 <body>
-
   <todo-app></todo-app>
-
 </body>
 </html>
