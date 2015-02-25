@@ -1,15 +1,19 @@
 import {Component, Template} from 'angular2/angular2';
 
-import {TodoHeader} from 'components/todo-header/todo-header.js';
-import {TodoMain} from 'components/todo-main/todo-main.js';
-import {TodoFooter} from 'components/todo-footer/todo-footer.js';
+import {TodoHeader} from 'components/todo-header/todo-header';
+import {TodoMain} from 'components/todo-main/todo-main';
+import {TodoFooter} from 'components/todo-footer/todo-footer';
 
+import {TodoStore} from 'stores/TodoStore';
 
 @Component({
-  selector: 'todo-app'
+  selector: 'todo-app',
+  componentServices: [
+    TodoStore
+  ]
 })
 @Template({
-  url: 'app/components/todo-app/todo-app.html',
+  url: System.baseURL+'app/components/todo-app/todo-app.html',
   directives: [
     TodoHeader,
     TodoMain,
@@ -17,9 +21,9 @@ import {TodoFooter} from 'components/todo-footer/todo-footer.js';
   ]
 })
 export class TodoApp {
-
-  constructor() {
-
+  constructor(todoStore: TodoStore) {
+    console.log('init app');
+    this.todoStore = todoStore;
   }
 
 }
