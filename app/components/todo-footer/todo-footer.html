@@ -125,20 +125,20 @@
 
   <ul>
     <li>
-      <a href="#/"
-        (click)="changeFilter('all')"
+      <a href="https://gdi2290.net/angular2do/#/"
+        (click)="changeFilter('all', $event)"
         [class.selected]="currentFilter == 'all'"
       >All</a>
     </li>
     <li>
-      <a href="#/active"
-        (click)="changeFilter('active')"
+      <a href="https://gdi2290.net/angular2do/#/active"
+        (click)="changeFilter('active', $event)"
         [class.selected]="currentFilter == 'active'"
       >Active</a>
     </li>
     <li>
-      <a href="#/completed"
-        (click)="changeFilter('completed')"
+      <a href="https://gdi2290.net/angular2do/#/completed"
+        (click)="changeFilter('completed', $event)"
         [class.selected]="currentFilter == 'completed'"
       >Completed</a>
     </li>

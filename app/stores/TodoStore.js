@@ -12,12 +12,12 @@ var state = {
     {
       id: 'BDEEFCA3-EF7E-413F-9A53-CCFF6B5A6FBB',
       content: 'fix filters',
-      completed: false
+      completed: true
     },
     {
       id: 'C984C7B7-51B7-476D-B48F-3247871B7678',
       content: 'attend ng-conf',
-      completed: true
+      completed: false
     }
   ],
   filter: todo => todo,
@@ -26,13 +26,14 @@ var state = {
 };
 
 function setState(newState) {
+  console.log('SET State');
   Object.assign(state, newState);
   // Emit change
 }
 
 export class TodoStore {
   constructor() {
-    console.log('TodoStore');
+    // console.log('TodoStore');
     this.state = state;
   }
 
@@ -48,10 +49,10 @@ export class TodoStore {
     return this.list.length;
   }
   get remainingCount() {
-    return this.list.filter(todo => !todo.completed).length;
+    return this.list.filter(function(todo) { return !todo.completed; }.bind(this)).length;
   }
   get completedCount() {
-    return this.list.filter(todo => todo.completed).length;
+    return this.list.filter(function(todo) { return todo.completed; }.bind(this)).length;
   }
 
   getFilteredList() {
@@ -76,14 +77,15 @@ export class TodoStore {
   }
 
   clearCompleted() {
-    var todos = this.list.filter(todo => !todo.completed);
+    var todos = this.list.filter(function(todo) { return !todo.completed; }.bind(this));
     setState({
       list: todos
     });
   }
 
   toggleAll(isComplete = true) {
-    var todos = this.list.map(todo => todo.completed = isComplete);
+    var todos = this.list.map(function(todo) { todo.completed = isComplete; return todo; }.bind(this))
+    ;
     setState({
       list: todos
     });
@@ -105,7 +107,7 @@ export class TodoStore {
   }
 
   remove(todo_id) {
-    var todos = this.list.filter(todo => todo.id !== todo_id);
+    var todos = this.list.filter(function(todo) { return todo.id !== todo_id; }.bind(this));
     setState({
       list: todos
     });
